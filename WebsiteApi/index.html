@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Testing</title>
+    <style>
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1, p {
+            color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Have a Productive day</h1>
+        <p>To start your day, you must pray, journal and plan your activities for the day. Don't forget it all about
+            dedication and your mindset, hunny.</p>
+    </header>
+
+    <script>
+        const header = document.querySelector('header');
+
+        fetch('https://api.unsplash.com/photos/random?client_id=""&query=city,money,holiday,creamy&orientation=landscape')
+            .then(response => response.json())
+            .then(data => {
+                const imageUrl = data.urls.full;
+                header.style.backgroundImage = `url(${imageUrl})`;
+                header.style.backgroundSize = 'cover';
+                header.style.backgroundPosition = 'center center';
+                header.style.backgroundRepeat = 'no-repeat';
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+</body>
+
+
+</html>
